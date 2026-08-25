@@ -1,0 +1,129 @@
+import { useState } from "react";
+import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { COLOR, FONT_DISPLAY, FONT_BODY } from "../lib/theme";
+import Eyebrow from "../components/Eyebrow";
+import FAQ from "../components/FAQ";
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(false);
+
+  const validate = () => {
+    const e = {};
+    if (!form.name.trim()) e.name = "Enter your name.";
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = "Enter a valid email.";
+    if (!form.message.trim()) e.message = "Enter a message.";
+    return e;
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+    const e = validate();
+    setErrors(e);
+    if (Object.keys(e).length === 0) setSent(true);
+  };
+
+  if (sent) {
+    return (
+      <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: COLOR.cream, border: `1px solid ${COLOR.line}` }}>
+        <CheckCircle2 size={36} color={COLOR.green} className="mx-auto mb-3" aria-hidden="true" />
+        <p style={{ fontFamily: FONT_BODY, fontWeight: 700, color: COLOR.ink }}>Message received.</p>
+        <p className="text-sm mt-1" style={{ fontFamily: FONT_BODY, color: COLOR.slate }}>
+          Demo only — connect this form to your email or CRM backend.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      <div>
+        <label htmlFor="name" className="block text-sm font-bold mb-2" style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+          Name
+        </label>
+        <input
+          id="name"
+          type="text"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg outline-none"
+          style={{ fontFamily: FONT_BODY, border: `1px solid ${errors.name ? COLOR.danger : COLOR.line}` }}
+        />
+        {errors.name && <p className="text-xs mt-1" style={{ color: COLOR.danger }}>{errors.name}</p>}
+      </div>
+      <div>
+        <label htmlFor="email" className="block text-sm font-bold mb-2" style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg outline-none"
+          style={{ fontFamily: FONT_BODY, border: `1px solid ${errors.email ? COLOR.danger : COLOR.line}` }}
+        />
+        {errors.email && <p className="text-xs mt-1" style={{ color: COLOR.danger }}>{errors.email}</p>}
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-sm font-bold mb-2" style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+          Message
+        </label>
+        <textarea
+          id="message"
+          rows={4}
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          className="w-full px-4 py-3 rounded-lg outline-none resize-none"
+          style={{ fontFamily: FONT_BODY, border: `1px solid ${errors.message ? COLOR.danger : COLOR.line}` }}
+        />
+        {errors.message && <p className="text-xs mt-1" style={{ color: COLOR.danger }}>{errors.message}</p>}
+      </div>
+      <button
+        type="submit"
+        className="w-full py-3.5 rounded-full font-bold text-sm"
+        style={{ backgroundColor: COLOR.navy, color: "white", fontFamily: FONT_BODY }}
+      >
+        Send message
+      </button>
+    </form>
+  );
+}
+
+export default function Contact() {
+  return (
+    <>
+      <section className="py-20 md:py-28" style={{ backgroundColor: "white" }}>
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
+          <div>
+            <Eyebrow>Contact us</Eyebrow>
+            <h1 style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: "clamp(1.9rem,3.5vw,2.5rem)", color: COLOR.ink, lineHeight: 1.15 }}>
+              We'd love to hear from you.
+            </h1>
+            <div className="mt-8 space-y-5">
+              <div className="flex items-center gap-3">
+                <MapPin size={18} color={COLOR.amberDeep} aria-hidden="true" />
+                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+                  12 Freedom Way, Lekki, Lagos, Nigeria — placeholder address
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={18} color={COLOR.amberDeep} aria-hidden="true" />
+                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>+234 800 000 0000 — placeholder</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail size={18} color={COLOR.amberDeep} aria-hidden="true" />
+                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+                  hello@beautifulgatefoundation.org — placeholder
+                </span>
+              </div>
+            </div>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+      <FAQ />
+    </>
+  );
+}
