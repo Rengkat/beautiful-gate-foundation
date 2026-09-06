@@ -4,6 +4,7 @@ import { COLOR, FONT_DISPLAY, FONT_BODY } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
 import StatStrip from "../components/StatStrip";
 import BrailleCell from "../components/BrailleCell";
+import SEO from "../components/SEO";
 
 const PROGRAMME_TEASERS = [
   { icon: GraduationCap, title: "Education for all", body: "Special schools, trained teachers, scholarships from primary school to university." },
@@ -103,11 +104,11 @@ function TestimonialTeaser() {
       <div className="max-w-3xl mx-auto px-6 text-center">
         <Quote size={28} color={COLOR.amberDeep} className="mx-auto mb-4" aria-hidden="true" />
         <p style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(1.3rem,2.5vw,1.75rem)", color: COLOR.ink, lineHeight: 1.5 }}>
-          Placeholder: "Beautiful Gate paid for my daughter's braille textbooks and trained her teacher.
-          She reads faster than I do now."
+          "I'm delighted for the education of my daughter. My prayer is that God almighty may continue to favour
+          the management of Beautiful Gate Foundation for the Blind."
         </p>
         <p className="mt-5 text-sm" style={{ fontFamily: FONT_BODY, color: COLOR.slate }}>
-          — Placeholder parent, programme beneficiary
+          — Charles Ogbodo, parent of a programme beneficiary
         </p>
         <Link to="/impact" className="mt-6 inline-flex items-center gap-1 text-sm font-bold" style={{ fontFamily: FONT_BODY, color: COLOR.amberDeep }}>
           Read our impact <ArrowRight size={16} aria-hidden="true" />
@@ -122,7 +123,7 @@ function DonateBanner() {
     <section className="py-16" style={{ backgroundColor: COLOR.navy }}>
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: "clamp(1.7rem,3vw,2.25rem)", color: "white" }}>
-          Every gift is 100% tax deductible.
+          Every naira changes a life.
         </h2>
         <Link
           to="/donate"
@@ -139,6 +140,11 @@ function DonateBanner() {
 export default function Home() {
   return (
     <>
+      <SEO
+        title="Home"
+        description="Beautiful Gate Foundation for the Blind empowers people with visual impairment in Nigeria through education, legal representation and economic empowerment. Based in Ohaukwu, Ebonyi State — donate or partner with us today."
+        path="/"
+      />
       <Hero />
       <StatStrip />
       <ProgrammeTeasers />

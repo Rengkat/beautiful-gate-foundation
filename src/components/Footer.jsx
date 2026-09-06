@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Twitter, Instagram, MessageCircle } from "lucide-react";
 import { COLOR, FONT_BODY, FONT_DISPLAY } from "../lib/theme";
 import { NAV_LINKS } from "./Navbar";
+import { SOCIAL_LINKS, WHATSAPP_LINK } from "../lib/seo";
+
+const SOCIALS = [
+  { Icon: Twitter, href: SOCIAL_LINKS.twitter, label: "Follow us on X (Twitter)" },
+  { Icon: Instagram, href: SOCIAL_LINKS.instagram, label: "Follow us on Instagram" },
+  { Icon: MessageCircle, href: WHATSAPP_LINK, label: "Chat with us on WhatsApp" },
+];
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -20,11 +27,13 @@ export default function Footer() {
               Empowering people with visual impairment through education, legal representation and economic opportunity.
             </p>
             <div className="flex gap-3 mt-5">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              {SOCIALS.map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
-                  aria-label="Social media link — placeholder"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
                   style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
                 >
@@ -100,7 +109,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Beautiful Gate Foundation for the Blind. All rights reserved.
           </p>
           <p className="text-xs" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.35)" }}>
-            Registered nonprofit — placeholder tax ID EIN 00-0000000
+            Ohaukwu LGA, Ebonyi State, Nigeria
           </p>
         </div>
       </div>

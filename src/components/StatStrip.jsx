@@ -5,7 +5,7 @@ const STATS = [
   { value: 2000, suffix: "+", label: "Lives impacted" },
   { value: 250, suffix: "+", label: "Schools assisted" },
   { value: 15, suffix: "", label: "Legal cases represented" },
-  { value: 50, suffix: "+", label: "Countries served" },
+  { value: 50, suffix: "+", label: "Communities reached" },
 ];
 
 function Stat({ stat, inView }) {

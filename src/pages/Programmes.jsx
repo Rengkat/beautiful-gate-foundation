@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { GraduationCap, Scale, Briefcase, ArrowRight, CheckCircle2 } from "lucide-react";
 import { COLOR, FONT_DISPLAY, FONT_BODY, FONT_MONO } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
+import SEO from "../components/SEO";
 
 const PROGRAMMES = [
   {
@@ -42,6 +43,11 @@ const PROGRAMMES = [
 export default function Programmes() {
   return (
     <>
+      <SEO
+        title="Our Programmes"
+        description="Education, legal service and economic empowerment — the three flagship programmes Beautiful Gate Foundation for the Blind runs for people with visual impairment in Nigeria."
+        path="/programmes"
+      />
       <section className="py-20 md:py-24" style={{ backgroundColor: "white" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-2xl">

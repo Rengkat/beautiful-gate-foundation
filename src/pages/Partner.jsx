@@ -2,9 +2,16 @@ import { Link } from "react-router-dom";
 import { Building2, CheckCircle2 } from "lucide-react";
 import { COLOR, FONT_DISPLAY, FONT_BODY } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
+import SEO from "../components/SEO";
 
 export default function Partner() {
   return (
+    <>
+    <SEO
+      title="Partner With Us"
+      description="Corporate and organisational partnerships that amplify our work for people with visual impairment in Nigeria — funding, in-kind support, employee volunteering and shared advocacy."
+      path="/partner"
+    />
     <section className="py-20 md:py-28" style={{ backgroundColor: "white" }}>
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div>
@@ -41,5 +48,6 @@ export default function Partner() {
         </div>
       </div>
     </section>
+    </>
   );
 }

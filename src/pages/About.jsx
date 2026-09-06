@@ -1,9 +1,16 @@
 import { COLOR, FONT_DISPLAY, FONT_BODY } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
 import BrailleTool from "../components/BrailleTool";
+import SEO from "../components/SEO";
 
 export default function About() {
   return (
+    <>
+    <SEO
+      title="About Us"
+      description="Learn about Beautiful Gate Foundation for the Blind — our mission to empower, train and rehabilitate people with visual impairment in Nigeria from childhood to self-reliance."
+      path="/about"
+    />
     <section className="py-20 md:py-28" style={{ backgroundColor: COLOR.cream }}>
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-start">
         <div>
@@ -55,5 +62,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </>
   );
 }

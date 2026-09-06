@@ -2,9 +2,11 @@ import { useState } from "react";
 import { CheckCircle2, HandCoins } from "lucide-react";
 import { COLOR, FONT_DISPLAY, FONT_BODY, FONT_MONO } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
+import SEO from "../components/SEO";
 import { useDonationStore } from "../store/donationStore";
+import { WHATSAPP_LINK, ORG_WHATSAPP_DISPLAY, ORG_EMAIL } from "../lib/seo";
 
-const AMOUNTS = [25, 50, 100, 250];
+const AMOUNTS = [5000, 10000, 25000, 50000];
 const DESIGNATIONS = ["Where needed most", "Education", "Legal service", "Economic empowerment"];
 
 function ThankYou() {
@@ -17,8 +19,9 @@ function ThankYou() {
           Thank you.
         </h1>
         <p className="mt-4" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>
-          This is a demo confirmation — no payment was processed. In production this hands off to your
-          payment processor (e.g. Stripe, Paystack, or a donor-management platform).
+          We've opened WhatsApp with your gift details pre-filled. Send that message and a member of our
+          team will reply with our bank account details and confirm your gift. You can also email{" "}
+          {ORG_EMAIL} if you prefer.
         </p>
         <button
           onClick={reset}
@@ -32,21 +35,18 @@ function ThankYou() {
   );
 }
 
-function DonateSubmit() {
+function DonateSubmit({ effectiveAmount, frequency, designation }) {
   const [error, setError] = useState("");
-  // Selector pulls only what's needed from the store — this component
-  // re-renders on amount/customAmount changes, nothing else does.
-  const amount = useDonationStore((s) => s.amount);
-  const customAmount = useDonationStore((s) => s.customAmount);
   const submit = useDonationStore((s) => s.submit);
-  const effectiveAmount = customAmount ? Number(customAmount) || 0 : amount || 0;
 
   const handleSubmit = () => {
     if (!effectiveAmount || effectiveAmount <= 0) {
-      setError("Enter an amount greater than $0 first.");
+      setError("Enter an amount greater than ₦0 first.");
       return;
     }
     setError("");
+    const message = `Hello Beautiful Gate Foundation, I would like to make a ${frequency === "monthly" ? "monthly" : "one-time"} donation of ₦${effectiveAmount.toLocaleString()} towards "${designation}". Please send your bank account details so I can complete this gift.`;
+    window.open(`${WHATSAPP_LINK}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     submit();
   };
 
@@ -58,7 +58,7 @@ function DonateSubmit() {
         style={{ backgroundColor: COLOR.amber, color: COLOR.navyDeep, fontFamily: FONT_BODY }}
       >
         <HandCoins size={18} aria-hidden="true" />
-        Continue to secure checkout
+        Continue on WhatsApp
       </button>
       {error && (
         <p className="mt-3 text-sm" role="alert" style={{ color: COLOR.danger, fontFamily: FONT_BODY }}>
@@ -66,7 +66,8 @@ function DonateSubmit() {
         </p>
       )}
       <p className="mt-4 text-xs text-center" style={{ fontFamily: FONT_BODY, color: COLOR.slate }}>
-        Demo only — wire this button to your payment processor of choice.
+        This opens WhatsApp ({ORG_WHATSAPP_DISPLAY}) with your gift details filled in, so our team can send
+        you bank transfer details and confirm receipt directly.
       </p>
     </div>
   );
@@ -89,7 +90,7 @@ function DonateForm() {
         <div className="text-center max-w-xl mx-auto">
           <Eyebrow dark>Join our mission</Eyebrow>
           <h1 style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: "clamp(1.9rem,3.5vw,2.5rem)", color: "white" }}>
-            Every gift is 100% tax deductible.
+            Every naira funds education, legal aid or empowerment.
           </h1>
         </div>
 
@@ -115,7 +116,7 @@ function DonateForm() {
           </div>
 
           <label className="block text-sm font-bold mb-3" style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
-            Choose an amount (USD)
+            Choose an amount (NGN)
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
             {AMOUNTS.map((a) => (
@@ -131,7 +132,7 @@ function DonateForm() {
                   border: `1px solid ${amount === a ? COLOR.amber : COLOR.line}`,
                 }}
               >
-                ${a}
+                ₦{a.toLocaleString()}
               </button>
             ))}
           </div>
@@ -140,7 +141,7 @@ function DonateForm() {
           </label>
           <div className="relative mb-8">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-bold" style={{ color: COLOR.slate, fontFamily: FONT_MONO }}>
-              $
+              ₦
             </span>
             <input
               id="custom-amount"
@@ -175,12 +176,12 @@ function DonateForm() {
               Your gift
             </span>
             <span style={{ fontFamily: FONT_MONO, fontWeight: 700, fontSize: "1.25rem", color: COLOR.ink }}>
-              ${effectiveAmount.toLocaleString()}
+              ₦{effectiveAmount.toLocaleString()}
               {frequency === "monthly" ? " / month" : ""}
             </span>
           </div>
 
-          <DonateSubmit />
+          <DonateSubmit effectiveAmount={effectiveAmount} frequency={frequency} designation={designation} />
         </div>
       </div>
     </section>
@@ -189,5 +190,14 @@ function DonateForm() {
 
 export default function Donate() {
   const submitted = useDonationStore((s) => s.submitted);
-  return submitted ? <ThankYou /> : <DonateForm />;
+  return (
+    <>
+      <SEO
+        title="Donate"
+        description="Support Beautiful Gate Foundation for the Blind in Naira. Every gift funds education, legal service or economic empowerment for people with visual impairment in Nigeria."
+        path="/donate"
+      />
+      {submitted ? <ThankYou /> : <DonateForm />}
+    </>
+  );
 }

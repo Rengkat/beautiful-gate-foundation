@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle2 } from "lucide-react";
 import { COLOR, FONT_DISPLAY, FONT_BODY } from "../lib/theme";
 import Eyebrow from "../components/Eyebrow";
 import FAQ from "../components/FAQ";
+import SEO from "../components/SEO";
+import { ORG_ADDRESS_LINE, ORG_PHONE_DISPLAY, ORG_WHATSAPP_DISPLAY, ORG_EMAIL, WHATSAPP_LINK } from "../lib/seo";
 
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -21,16 +23,22 @@ function ContactForm() {
     ev.preventDefault();
     const e = validate();
     setErrors(e);
-    if (Object.keys(e).length === 0) setSent(true);
+    if (Object.keys(e).length === 0) {
+      const subject = encodeURIComponent(`Website enquiry from ${form.name}`);
+      const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
+      window.location.href = `mailto:${ORG_EMAIL}?subject=${subject}&body=${body}`;
+      setSent(true);
+    }
   };
 
   if (sent) {
     return (
       <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: COLOR.cream, border: `1px solid ${COLOR.line}` }}>
         <CheckCircle2 size={36} color={COLOR.green} className="mx-auto mb-3" aria-hidden="true" />
-        <p style={{ fontFamily: FONT_BODY, fontWeight: 700, color: COLOR.ink }}>Message received.</p>
+        <p style={{ fontFamily: FONT_BODY, fontWeight: 700, color: COLOR.ink }}>Almost there.</p>
         <p className="text-sm mt-1" style={{ fontFamily: FONT_BODY, color: COLOR.slate }}>
-          Demo only — connect this form to your email or CRM backend.
+          We've opened your email app with your message pre-filled — just hit send. If nothing opened,
+          email us directly at {ORG_EMAIL}.
         </p>
       </div>
     );
@@ -94,6 +102,11 @@ function ContactForm() {
 export default function Contact() {
   return (
     <>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Beautiful Gate Foundation for the Blind — visit, call, WhatsApp or email us at our office in Ohaukwu, Ebonyi State, Nigeria."
+        path="/contact"
+      />
       <section className="py-20 md:py-28" style={{ backgroundColor: "white" }}>
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
           <div>
@@ -104,19 +117,25 @@ export default function Contact() {
             <div className="mt-8 space-y-5">
               <div className="flex items-center gap-3">
                 <MapPin size={18} color={COLOR.amberDeep} aria-hidden="true" />
-                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
-                  12 Freedom Way, Lekki, Lagos, Nigeria — placeholder address
-                </span>
+                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>{ORG_ADDRESS_LINE}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={18} color={COLOR.amberDeep} aria-hidden="true" />
-                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>+234 800 000 0000 — placeholder</span>
+                <a href={`tel:${ORG_PHONE_DISPLAY.replace(/\s/g, "")}`} style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+                  {ORG_PHONE_DISPLAY}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MessageCircle size={18} color={COLOR.amberDeep} aria-hidden="true" />
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+                  WhatsApp: {ORG_WHATSAPP_DISPLAY}
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={18} color={COLOR.amberDeep} aria-hidden="true" />
-                <span style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
-                  hello@beautifulgatefoundation.org — placeholder
-                </span>
+                <a href={`mailto:${ORG_EMAIL}`} style={{ fontFamily: FONT_BODY, color: COLOR.ink }}>
+                  {ORG_EMAIL}
+                </a>
               </div>
             </div>
           </div>

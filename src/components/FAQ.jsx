@@ -6,15 +6,15 @@ import Eyebrow from "./Eyebrow";
 const DEFAULT_FAQS = [
   {
     q: "Is my donation tax deductible?",
-    a: "Yes — Beautiful Gate Foundation for the Blind is a registered nonprofit, and gifts are 100% tax deductible. Replace this with your actual registration and tax-ID details.",
+    a: "Beautiful Gate Foundation for the Blind is a Nigerian nonprofit. Tax treatment of a gift depends on your own country's tax rules, so please check with your tax adviser. Contact us and we'll issue a donation receipt for your records.",
   },
   {
     q: "How is my donation used?",
-    a: "Gifts fund our three programmes directly: education, legal service and economic empowerment. Placeholder — link to a real annual report or financial breakdown here.",
+    a: "Gifts fund our three programmes directly: education (schools, teacher training and scholarships), legal service (representation and advocacy), and economic empowerment (grants, training and cooperatives).",
   },
   {
     q: "Can I volunteer instead of donating?",
-    a: "Yes. Placeholder — describe volunteer roles (teaching assistance, legal aid, mentorship) and link to an application form.",
+    a: "Yes — we welcome volunteers for teaching assistance, legal aid support and mentorship. Message us on WhatsApp or email and tell us where you'd like to help.",
   },
 ];
 
