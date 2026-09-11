@@ -20,9 +20,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-10 pb-10" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div>
-            <span style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, color: "white", fontSize: "1.1rem" }}>
-              Beautiful Gate Foundation
-            </span>
+            <div className="flex items-center gap-3">
+              <img src="/logo.svg" alt="" width="36" height="36" className="w-9 h-9 rounded-full flex-shrink-0" />
+              <span style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, color: "white", fontSize: "1.1rem" }}>
+                Beautiful Gate Foundation
+              </span>
+            </div>
             <p className="mt-3 text-sm" style={{ fontFamily: FONT_BODY, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>
               Empowering people with visual impairment through education, legal representation and economic opportunity.
             </p>

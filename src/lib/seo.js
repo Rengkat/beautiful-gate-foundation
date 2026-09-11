@@ -2,17 +2,17 @@
 // the sitemap and the structured data all stay in sync.
 //
 // IMPORTANT: replace SITE_URL with your real, live domain once the site
-// is deployed (e.g. https://beautifulgatefoundation.org). Search engines
+// is deployed (e.g. https://beautifulgatefoundation.org.ng). Search engines
 // use this for canonical URLs, the sitemap and Open Graph/Twitter cards —
 // if it's wrong, shares and rich results will point to the wrong place.
-export const SITE_URL = "https://beautifulgatefoundation.org";
+export const SITE_URL = "https://beautifulgatefoundation.org.ng";
 export const SITE_NAME = "Beautiful Gate Foundation for the Blind";
 
 export const ORG_EMAIL = "beautifulgatefoundation@gmail.com";
 export const ORG_PHONE = "+2349032251030";
 export const ORG_PHONE_DISPLAY = "+234 903 225 1030";
-export const ORG_WHATSAPP = "2348137940805";
-export const ORG_WHATSAPP_DISPLAY = "+234 813 794 0805";
+export const ORG_WHATSAPP = "09032251030";
+export const ORG_WHATSAPP_DISPLAY = "+2349032251030";
 export const WHATSAPP_LINK = `https://wa.me/${ORG_WHATSAPP}`;
 
 export const ORG_ADDRESS_LINE = "Obodo Odo Umuoru, Izzhia-ngbo, Ohaukwu LGA, Ebonyi State, Nigeria";

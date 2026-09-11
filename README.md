@@ -36,7 +36,7 @@ npm run preview
 
 1. **`SITE_URL` in `src/lib/seo.js`** (and the matching URLs in
    `index.html`, `public/robots.txt`, `public/sitemap.xml`) — currently set
-   to `https://beautifulgatefoundation.org` as a placeholder domain. Replace
+   to `https://beautifulgatefoundation.org.ng` as a placeholder domain. Replace
    every occurrence with your real, live domain once you deploy, or
    canonical links/sitemap/social previews will point to the wrong place.
 2. **Images**: `og-image.jpg` (1200×630, used for link previews),

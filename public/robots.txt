@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://beautifulgatefoundation.org/sitemap.xml
+Sitemap: https://beautifulgatefoundation.org.ng/sitemap.xml

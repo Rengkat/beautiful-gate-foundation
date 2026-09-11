@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { ChevronDown } from "lucide-react";
 import { COLOR, FONT_BODY, FONT_DISPLAY } from "../lib/theme";
 import Eyebrow from "./Eyebrow";
@@ -18,10 +19,28 @@ const DEFAULT_FAQS = [
   },
 ];
 
+// FAQPage structured data so these questions are eligible to show as
+// expandable rich results directly in Google search — free extra real
+// estate on the results page. Kept in sync with whatever `items` render.
+function buildFaqSchema(items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
 export default function FAQ({ items = DEFAULT_FAQS, title = "Frequently asked." }) {
   const [openIndex, setOpenIndex] = useState(0);
   return (
     <section className="py-20 md:py-24" style={{ backgroundColor: COLOR.cream }}>
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(buildFaqSchema(items))}</script>
+      </Helmet>
       <div className="max-w-3xl mx-auto px-6">
         <Eyebrow>Questions</Eyebrow>
         <h2 style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: "clamp(1.8rem,3vw,2.25rem)", color: COLOR.ink }}>

@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://beautifulgatefoundation.org/</loc>
+    <loc>https://beautifulgatefoundation.org.ng/</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/about</loc>
+    <loc>https://beautifulgatefoundation.org.ng/about</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/programmes</loc>
+    <loc>https://beautifulgatefoundation.org.ng/programmes</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/impact</loc>
+    <loc>https://beautifulgatefoundation.org.ng/impact</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/donate</loc>
+    <loc>https://beautifulgatefoundation.org.ng/donate</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/partner</loc>
+    <loc>https://beautifulgatefoundation.org.ng/partner</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://beautifulgatefoundation.org/contact</loc>
+    <loc>https://beautifulgatefoundation.org.ng/contact</loc>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

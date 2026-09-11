@@ -38,9 +38,13 @@ export default function Navbar() {
       </a>
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3" aria-label="Beautiful Gate Foundation home">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: COLOR.amber }}>
-            <span style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, color: COLOR.navyDeep, fontSize: "18px" }}>BG</span>
-          </div>
+          <img
+            src="/logo.svg"
+            alt="Beautiful Gate Foundation for the Blind logo"
+            width="40"
+            height="40"
+            className="w-10 h-10 rounded-full flex-shrink-0"
+          />
           <span className="hidden sm:block text-white leading-tight" style={{ fontFamily: FONT_DISPLAY, fontWeight: 700, fontSize: "15px" }}>
             Beautiful Gate
             <br />
